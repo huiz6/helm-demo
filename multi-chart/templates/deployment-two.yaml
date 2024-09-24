@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "multi-chart.name" . }}-two
+  labels:
+    app: {{ include "multi-chart.name" . }}
+spec:
+  replicas: {{ .Values.deploymentTwo.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "multi-chart.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "multi-chart.name" . }}
+    spec:
+      containers:
+        - name: httpd
+          image: "{{ .Values.deploymentTwo.image }}:{{ .Values.deploymentTwo.imageTag }}"
+          ports:
+            - containerPort: 80

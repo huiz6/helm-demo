@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "multi-chart.fullname" . }}-one
+  labels:
+    app: {{ include "multi-chart.name" . }}
+spec:
+  replicas: {{ .Values.deploymentOne.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "multi-chart.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "multi-chart.name" . }}
+    spec:
+      containers:
+        - name: nginx
+          image: "{{ .Values.deploymentOne.image }}:{{ .Values.deploymentOne.imageTag }}"
+          ports:
+            - containerPort: 80
