@@ -1,9 +1,9 @@
 deploymentOne:
-  replicas: 2
+  replicas: 1
   image: nginx
   imageTag: "1.19.0"
 
 deploymentTwo:
-  replicas: 3
+  replicas: 1
   image: httpd
   imageTag: "2.4"

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "multi-chart.name" . }}-two
+  name: httpd
   labels:
     app: {{ include "multi-chart.name" . }}
 spec:
